@@ -1,14 +1,19 @@
 # fqComplexity
 
 The input FASTQ file should already have its adapters removed.
-The `complexity_pro.R`
+The `complexity_pro.R` script is within this repository
 
 Prior to running fqComplexity, you need to install the following dependencies:
 
-nseqtk https://github.com/lh3/seqtk \n
+nseqtk https://github.com/lh3/seqtk 
+
 fqdedup https://github.com/guertinlab/fqdedup
 
-Usage: \n
-`fqComplexity -i input.fastq -d /directory/with/rscript` \n
--i input fastq file, with adapter/adapter ligation products removed  \n
+Usage: 
+
+`fqComplexity -i input.fastq -d /directory/with/rscript`
+
+-i input fastq file, with adapter/adapter ligation products removed 
+
+
 -d directory of the complexity_pro.R script without trailing / slash
