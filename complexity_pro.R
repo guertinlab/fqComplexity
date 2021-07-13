@@ -5,8 +5,8 @@ print(complexity.log)
 prefix.name = strsplit(complexity.log, "_complexity.log")[[1]][1]
 complexity = read.table(complexity.log, header=FALSE)
 
-reads = complexity[,1][rep(c(TRUE, FALSE), length(complexity[,1])/2)]
-unique = complexity[,1][rep(c(FALSE, TRUE), length(complexity[,1])/2)]
+reads = c(0, complexity[,1][rep(c(TRUE, FALSE), length(complexity[,1])/2)])
+unique = c(0, complexity[,1][rep(c(FALSE, TRUE), length(complexity[,1])/2)])
 df = data.frame = cbind(reads, unique)
 asymptotic.model = NLSstAsymptotic(sortedXyData(reads, unique))
 
@@ -34,4 +34,3 @@ text(1000000, 65000000, bquote('b1 = '~.(b1)), pos = 4, cex = 0.6)
 text(1000000, 60000000, bquote('ln.rate.constant = '~.(ln.rate.constant)), pos = 4, cex = 0.6)
 
 dev.off()
-
