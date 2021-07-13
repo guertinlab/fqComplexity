@@ -6,7 +6,7 @@ The `complexity_pro.R` script is within this repository
 
 Prior to running `fqComplexity`, you need to install the following dependencies:
 
-nseqtk https://github.com/lh3/seqtk 
+seqtk https://github.com/lh3/seqtk 
 
 fqdedup https://github.com/guertinlab/fqdedup
 
