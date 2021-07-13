@@ -10,5 +10,5 @@ fqdedup https://github.com/guertinlab/fqdedup
 
 Usage: 
 `fqComplexity -i input.fastq -d /directory/with/rscript` 
-`.  -i input fastq file, with adapter/adapter ligation products removed ` 
-`.  -d directory of the complexity_pro.R script without trailing / slash`
+-i input fastq file, with adapter/adapter ligation products removed ` 
+-d directory of the complexity_pro.R script without trailing / slash
