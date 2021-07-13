@@ -1,0 +1,35 @@
+#!/bin/bash
+inpt=
+name=
+outf=
+while getopts "i:d:" OPTION
+do
+    case $OPTION in
+	i)
+            inpt=$OPTARG
+            ;;
+	d)
+	    dir=$OPTARG
+	    ;;
+
+    esac
+done
+
+if [ -n "$inpt" ] && [ -n "$dir" ]; then
+    rprog=/complexity_pro.R
+    call="${dir}${rprog}"
+    nm=$(echo $inpt | awk -F".fastq" '{print $1}')
+    seqtk sample -s100 $inpt 1000000 | fqdedup -i - -o ${nm}1000000.fastq 2>&1 | tee ${nm}_complexity.log
+    rm ${nm}1000000.fastq
+    END_four=$(cat $inpt | wc -l)
+    END=$(($END_four / 4))
+    for j in $(seq 2000000 1000000 $END)
+    do
+	seqtk sample -s100 $inpt ${j} | fqdedup -i - -o ${nm}_noadap_${j}_dedup.fastq 2>&1 | tee >>${nm}_complexity.log
+	rm ${nm}_noadap_${j}_dedup.fastq
+    done
+    Rscript ${call} ${nm}_complexity.log
+else 
+    echo -e "\nPrior to running fqComplexity, you need to install the following dependencies:\nseqtk https://github.com/lh3/seqtk\nfqdedup https://github.com/guertinlab/fqdedup\n\fqComplexity usage:\n  fqComplexity -i input.fastq -d /directory/with/rscript \n\n-i input fastq file, with adapter/adapter ligation products removed  \n-d directory of the complexity_pro.R script without trailing / \n "
+fi
+
