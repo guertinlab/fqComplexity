@@ -4,7 +4,7 @@ The input FASTQ file should already have its adapters removed.
 
 The `complexity_pro.R` script is within this repository
 
-Prior to running fqComplexity, you need to install the following dependencies:
+Prior to running `fqComplexity`, you need to install the following dependencies:
 
 nseqtk https://github.com/lh3/seqtk 
 
