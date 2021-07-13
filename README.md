@@ -2,7 +2,11 @@
 
 The input FASTQ file should already have its adapters removed.
 
-The `complexity_pro.R` script is within this repository
+The `complexity_pro.R` script is within this repository.
+
+Navigate to the directory containg `fqComplexity` and change modifications with:
+
+`chmox +x fqComplexity`
 
 Prior to running `fqComplexity`, you need to install the following dependencies and move to $PATH:
 
