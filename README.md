@@ -1,6 +1,6 @@
 # fqComplexity
 
-The input FASTQ file should already have its adapters removed. The FASTQ file is subsampled from 1 million to the read depthwith a 1000000 step. The intermediate file is deduplicated and the input and output numbers are logged. An asymptotic regression model is fit to the data and the equation for calculating expect complexity at any read depth is printed on the resulting PDF plot.
+The input FASTQ file should already have its adapters removed. The FASTQ file is subsampled from 1 million to the read depth ith a 1 million step. The intermediate file is deduplicated and the input and output numbers are logged. An asymptotic regression model is fit to the data and the equation for calculating expect complexity at any read depth is printed on the resulting PDF plot.
 
 The `complexity_pro.R` script is within this repository.
 
