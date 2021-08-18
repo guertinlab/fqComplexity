@@ -30,6 +30,6 @@ if [ -n "$inpt" ] && [ -n "$dir" ]; then
     done
     Rscript ${call} ${nm}_complexity.log
 else 
-    echo -e "\nPrior to running fqComplexity, you need to install the following dependencies:\nseqtk https://github.com/lh3/seqtk\nfqdedup https://github.com/guertinlab/fqdedup\n\fqComplexity usage:\n  fqComplexity -i input.fastq -d /directory/with/rscript \n\n-i input fastq file, with adapter/adapter ligation products removed  \n-d directory of the complexity_pro.R script without trailing / \n "
+    echo -e "\nPrior to running fqComplexity, you need to install the following dependencies:\nseqtk https://github.com/lh3/seqtk\nfqdedup https://github.com/guertinlab/fqdedup\n fqComplexity usage:\n  fqComplexity -i input.fastq -d /directory/with/rscript \n\n-i input fastq file, with adapter/adapter ligation products removed  \n-d directory of the complexity_pro.R script without trailing / \n "
 fi
 
