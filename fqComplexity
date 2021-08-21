@@ -53,6 +53,6 @@ elif [ -n "$inpt" ]; then
 	rm ${nm}_noadap_${j}_dedup.fastq
     done
     complexity_pro.R ${nm}_complexity.log
-else; then 
+else 
     echo -e "\nPrior to running fqComplexity, you need to install the following dependencies:\nseqtk https://github.com/lh3/seqtk\nfqdedup https://github.com/guertinlab/fqdedup\nfqComplexity usage:\n  fqComplexity -i input.fastq -x preprocessing factor -y postprocessing factor\n\n-i input fastq file, with adapter/adapter ligation products removed \n-x a factor for any preprocessing that occurred, such as removing adapter/adapter ligation products\n-y a factor for any postprocessing that occurred\n "
 fi
