@@ -18,16 +18,15 @@ do
     esac
 done
 
-nm=$(echo $inpt | awk -F".fastq" '{print $1}')
-END_four=$(cat $inpt | wc -l)
-END=$(($END_four / 4))
-start=$(($END / 10))
-start2=$(($END / 5))
-
 if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
     if [ -f ${nm}_complexity_total.log ] ; then
     	rm ${nm}_complexity_total.log
     fi
+    nm=$(echo $inpt | awk -F".fastq" '{print $1}')
+    END_four=$(cat $inpt | wc -l)
+    END=$(($END_four / 4))
+    start=$(($END / 10))
+    start2=$(($END / 5))
     seqtk sample -s100 $inpt $start | fqdedup -i - -o ${nm}$start.fastq 2>&1 | tee ${nm}_complexity.log
     rm ${nm}$start.fastq
     for j in $(seq $start2 $start $END)
@@ -41,6 +40,11 @@ elif [ -n "$inpt" ]; then
     if [ -f ${nm}_complexity.log ] ; then
     	rm ${nm}_complexity.log
     fi	
+    nm=$(echo $inpt | awk -F".fastq" '{print $1}')
+    END_four=$(cat $inpt | wc -l)
+    END=$(($END_four / 4))
+    start=$(($END / 10))
+    start2=$(($END / 5))
     seqtk sample -s100 $inpt $start | fqdedup -i - -o ${nm}$start.fastq 2>&1 | tee ${nm}_complexity.log
     rm ${nm}$start.fastq
     for j in $(seq $start2 $start $END)
