@@ -29,7 +29,7 @@ fi
 if [ -f ${nm}_complexity_total.log ] ; then
     rm ${nm}_complexity_total.log
 fi
-if [ -n "$inpt" ] && [ -n "$dir" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
+if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
     seqtk sample -s100 $inpt $start | fqdedup -i - -o ${nm}$start.fastq 2>&1 | tee ${nm}_complexity.log
     rm ${nm}$start.fastq
     for j in $(seq $start2 $start $END)
@@ -39,7 +39,7 @@ if [ -n "$inpt" ] && [ -n "$dir" ] && [ -n "$factorx" ] && [ -n "$factory" ]; th
     done
     awk -v myvar=$factorx 'NR % 2 {print $1 * myvar} !(NR % 2) {print $1}'  ${nm}_complexity.log | awk -v myvar=$factory '!(NR % 2) {print $1 * myvar } NR % 2 {print $1}' > ${nm}_complexity_total.log
     complexity_pro.R ${nm}_complexity_total.log $factorx
-elif [ -n "$inpt" ] && [ -n "$dir" ]; then
+elif [ -n "$inpt" ]; then
     seqtk sample -s100 $inpt $start | fqdedup -i - -o ${nm}$start.fastq 2>&1 | tee ${nm}_complexity.log
     rm ${nm}$start.fastq
     for j in $(seq $start2 $start $END)
