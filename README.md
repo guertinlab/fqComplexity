@@ -1,6 +1,8 @@
 # fqComplexity
 
-The input FASTQ file should already have its adapters removed. The UMI should still be included in the FASTQ DNA sequence. The FASTQ file is subsampled from 1 million to the read depth with a 1 million step. Therefore, your read depth should be above 1 million. The intermediate file is deduplicated and the input and output numbers are logged. An asymptotic regression model is fit to the data and the equation for calculating expected complexity at any read depth is printed on the resulting PDF plot. The program is not speed optimized, or really optimized at all, but this brute force method works.
+The input FASTQ file should already have its adapters removed. The UMI should still be included in the FASTQ DNA sequence. The FASTQ file is subsampled into deciles. The intermediate file is deduplicated and the input and output numbers are logged. An asymptotic regression model is fit to the data and the equation for calculating expected complexity at any read depth is printed on the resulting PDF plot. 
+
+The flags `-x` and `-y` are optional and the each default to 1. If the raw files were preprocessed in some way, then 
 
 The `complexity_pro.R` script is within this repository.
 
@@ -21,3 +23,7 @@ Usage:
 -i input fastq file, with adapter/adapter ligation products removed 
 
 -d directory of the complexity_pro.R script without trailing / slash
+
+-x factor for any preprocessing that occurred, such as removing adapter/adapter ligation products
+
+-y a factor for any postprocessing that occurred
