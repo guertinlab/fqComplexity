@@ -23,13 +23,11 @@ END_four=$(cat $inpt | wc -l)
 END=$(($END_four / 4))
 start=$(($END / 10))
 start2=$(($END / 5))
-if [ -f ${nm}_complexity.log ] ; then
-    rm ${nm}_complexity.log
-fi
-if [ -f ${nm}_complexity_total.log ] ; then
-    rm ${nm}_complexity_total.log
-fi
+
 if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
+    if [ -f ${nm}_complexity_total.log ] ; then
+    	rm ${nm}_complexity_total.log
+    fi
     seqtk sample -s100 $inpt $start | fqdedup -i - -o ${nm}$start.fastq 2>&1 | tee ${nm}_complexity.log
     rm ${nm}$start.fastq
     for j in $(seq $start2 $start $END)
@@ -40,6 +38,9 @@ if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
     awk -v myvar=$factorx 'NR % 2 {print $1 * myvar} !(NR % 2) {print $1}'  ${nm}_complexity.log | awk -v myvar=$factory '!(NR % 2) {print $1 * myvar } NR % 2 {print $1}' > ${nm}_complexity_total.log
     complexity_pro.R ${nm}_complexity_total.log $factorx
 elif [ -n "$inpt" ]; then
+    if [ -f ${nm}_complexity.log ] ; then
+    	rm ${nm}_complexity.log
+    fi	
     seqtk sample -s100 $inpt $start | fqdedup -i - -o ${nm}$start.fastq 2>&1 | tee ${nm}_complexity.log
     rm ${nm}$start.fastq
     for j in $(seq $start2 $start $END)
