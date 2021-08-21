@@ -25,4 +25,4 @@ fqComplexity -i input.fastq -d /directory/with/rscript
     -d directory of the complexity_pro.R script without trailing / slash 
     -x factor for any preprocessing that occurred, such as removing adapter/adapter ligation products 
     -y a factor for any postprocessing that occurred
-    ```
+```
