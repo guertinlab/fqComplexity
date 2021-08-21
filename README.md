@@ -18,7 +18,7 @@ fqdedup https://github.com/guertinlab/fqdedup
 
 Usage: 
 
-`fqComplexity -i input.fastq -d /directory/with/rscript`
+`fqComplexity -i input.fastq -d /directory/with/rscript
 
 -i input fastq file, with adapter/adapter ligation products removed 
 
@@ -26,4 +26,4 @@ Usage:
 
 -x factor for any preprocessing that occurred, such as removing adapter/adapter ligation products
 
--y a factor for any postprocessing that occurred
+-y a factor for any postprocessing that occurred`
