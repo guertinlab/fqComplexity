@@ -18,8 +18,8 @@ fqdedup https://github.com/guertinlab/fqdedup
 
 Usage: 
 
-`fqComplexity -i input.fastq -d /directory/with/rscript<br/>
--i input fastq file, with adapter/adapter ligation products removed<br/>
--d directory of the complexity_pro.R script without trailing / slash<br/>
--x factor for any preprocessing that occurred, such as removing adapter/adapter ligation products<br/>
+`fqComplexity -i input.fastq -d /directory/with/rscript <br/>
+-i input fastq file, with adapter/adapter ligation products removed <br/>
+-d directory of the complexity_pro.R script without trailing / slash <br/>
+-x factor for any preprocessing that occurred, such as removing adapter/adapter ligation products <br/>
 -y a factor for any postprocessing that occurred`
