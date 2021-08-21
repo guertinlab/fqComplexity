@@ -3,7 +3,7 @@ argsLen <- length(Args)
 
 complexity.log = Args[1]
 print(complexity.log)
-prefix.name = strsplit(complexity.log, "_complexity.log")[[1]][1]
+prefix.name = strsplit(complexity.log, ".log")[[1]][1]
 complexity = read.table(complexity.log, header=FALSE)
 
 #this is for QC for PCR duplicates
@@ -40,11 +40,13 @@ if (argsLen == 1) {
     
     lines(read.depth.values, b1*(1-exp(-exp(ln.rate.constant) * read.depth.values)), col='red')
     abline(0, 1, col='blue', lty = 2)
-    text(1000000, 85000000, bquote('Estimate concordant aligned output of any read_depth'), pos = 4, cex = 0.8)
-    text(1000000, 80000000, bquote('using this equation and parameters:'), pos = 4, cex = 0.8)
-    text(1000000, 75000000, bquote('unique = b1*(1-exp(-exp(ln.rate.constant ) * read_depth))'), pos = 4, cex = 0.6)
-    text(1000000, 70000000, bquote('b1 = '~.(b1)), pos = 4, cex = 0.6)
-    text(1000000, 65000000, bquote('ln.rate.constant = '~.(ln.rate.constant)), pos = 4, cex = 0.6)
+    text(1000000, 97000000, bquote('Estimate the necessary read_depth for desired number of'), pos = 4, cex = 0.8)
+    text(1000000, 93000000, bquote('concordantly aligned reads using the following'), pos = 4, cex = 0.8)
+#   text(1000000, 85000000, bquote('Concordant_Aligned = b1*(1-exp(-exp(ln.rate.constant ) * read_depth))'), pos = 4, cex = 0.6)
+    text(1000000, 89000000, bquote('equation and parameters:'), pos = 4, cex = 0.8)
+    text(1000000, 84000000, bquote('read_depth = ln(-((Concordant_Aligned /  b1) -1 )) / -exp(ln.rate.constant) '), pos = 4, cex = 0.65)
+    text(1000000, 80000000, bquote('b1 = '~.(b1)), pos = 4, cex = 0.65)
+    text(1000000, 76000000, bquote('ln.rate.constant = -'~.(-ln.rate.constant)), pos = 4, cex = 0.65)#double negative allows one to copy/paste from PDF as minus and not hyphen
 
     dev.off()
 }
