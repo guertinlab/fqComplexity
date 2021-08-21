@@ -2,7 +2,7 @@
 
 The input FASTQ file should already have its adapters removed. The UMI should still be included in the FASTQ DNA sequence. The FASTQ file is subsampled into deciles. The intermediate file is deduplicated and the input and output numbers are logged. An asymptotic regression model is fit to the data and the equation for calculating expected complexity at any read depth is printed on the resulting PDF plot. 
 
-The flags `-x` and `-y` are optional and they each default to 1. If the raw files were preprocessed in some way, `-x` is set to the total raw reads divided by the resultant number after preprocessing. If your pipeline has filtering steps after FASTQ duplication, then `-y` is set to final desired output (usually aligned reads) divided by the total number of deduplicated reads. An example of `-x` would be the value 2 if half the reads are prefiltered in a step that removes adapter/adapter ligation products. An example of `-y` would be the value 0.5 if half of the reads that are deduplicated align to the genome. 
+The flags `-x` and `-y` are optional and they each default to 1. If the raw files were preprocessed in some way, `-x` should be set to the total raw reads divided by the resultant number after preprocessing. If your pipeline has filtering steps after FASTQ duplication, then `-y` should be set to final desired output (usually aligned reads) divided by the total number of deduplicated reads. An example of `-x` would be the value 2 if half the reads are prefiltered in a step that removes adapter/adapter ligation products. An example of `-y` would be the value 0.5 if half of the reads that are deduplicated align to the genome. 
 
 The `complexity_pro.R` script is within this repository.
 
