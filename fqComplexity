@@ -16,9 +16,9 @@ do
 	
     esac
 done
-
-nm=$(echo $inpt | awk -F".fastq" '{print $1}')
+    
 if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
+    nm=$(echo $inpt | awk -F".fastq" '{print $1}')
     if [ -f ${nm}_complexity_total.log ] ; then
     	rm ${nm}_complexity_total.log
     fi
@@ -41,6 +41,7 @@ if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
     complexity_pro.R ${nm}_complexity_total.log $factorx
     fi
 elif [ -n "$inpt" ]; then
+    nm=$(echo $inpt | awk -F".fastq" '{print $1}')
     if [ -f ${nm}_complexity.log ] ; then
     	rm ${nm}_complexity.log
     fi	
