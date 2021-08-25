@@ -22,6 +22,10 @@ if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
     if [ -f ${nm}_complexity_total.log ] ; then
     	rm ${nm}_complexity_total.log
     fi
+    if [ -f ${nm}_complexity.log ] ; then
+    	awk -v myvar=$factorx 'NR % 2 {print $1 * myvar} !(NR % 2) {print $1}'  ${nm}_complexity.log | awk -v myvar=$factory '!(NR % 2) {print $1 * myvar } NR % 2 {print $1}' > ${nm}_complexity_total.log
+        complexity_pro.R ${nm}_complexity_total.log $factorx
+    else
     nm=$(echo $inpt | awk -F".fastq" '{print $1}')
     END_four=$(cat $inpt | wc -l)
     END=$(($END_four / 4))
