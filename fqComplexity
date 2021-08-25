@@ -40,6 +40,7 @@ if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
     done
     awk -v myvar=$factorx 'NR % 2 {print $1 * myvar} !(NR % 2) {print $1}'  ${nm}_complexity.log | awk -v myvar=$factory '!(NR % 2) {print $1 * myvar } NR % 2 {print $1}' > ${nm}_complexity_total.log
     complexity_pro.R ${nm}_complexity_total.log $factorx
+    fi
 elif [ -n "$inpt" ]; then
     if [ -f ${nm}_complexity.log ] ; then
     	rm ${nm}_complexity.log
