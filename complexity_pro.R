@@ -14,15 +14,15 @@ unique = c(0, complexity[,1][rep(c(FALSE, TRUE), length(complexity[,1])/2)])
 df = as.data.frame(cbind(reads, unique))
 asymptotic.model = NLSstAsymptotic(sortedXyData(reads, unique))
 
-asm.depth = nls(df$unique ~ b1*(1-exp(-exp(ln.rate.constant) * df$reads)), 
-                    start = list(b1 = asymptotic.model[2], ln.rate.constant = asymptotic.model[3]))
+asm.depth = nls(df$unique ~ b2*(1-exp(-exp(ln.rate.constant) * df$reads)), 
+                    start = list(b2 = asymptotic.model[2], ln.rate.constant = asymptotic.model[3]))
 
-b1 = coef(asm.depth)[1]
+b2 = coef(asm.depth)[1]
 ln.rate.constant = coef(asm.depth)[2]
 reciprocal.rate.constant = exp(-ln.rate.constant)
 
 read.depth.values = seq(0, 100000000, by = 1000000)
-unique.at.10mil = b1*(1-exp(-exp(ln.rate.constant ) * 10000000))
+unique.at.10mil = b2*(1-exp(-exp(ln.rate.constant ) * 10000000))
 
 if (argsLen == 1) {
     pdf(paste(prefix.name,'_complexity.pdf', sep=''), width=6, height=6, useDingbats=FALSE)
@@ -45,14 +45,10 @@ if (argsLen == 1) {
     abline(0, 1, col='blue', lty = 2)
     text(1000000, 97000000, bquote('Estimate the necessary read_depth for desired number of'), pos = 4, cex = 0.8)
     text(1000000, 93000000, bquote('concordantly aligned reads using the following'), pos = 4, cex = 0.8)
-#   text(1000000, 85000000, bquote('Concordant_Aligned = b1*(1-exp(-exp(ln.rate.constant ) * read_depth))'), pos = 4, cex = 0.6)
     text(1000000, 89000000, bquote('equation and parameters:'), pos = 4, cex = 0.8)
-#   text(1000000, 84000000, bquote('read_depth = ln(-((Concordant_Aligned /  b1) -1 )) / -exp(ln.rate.constant) '), pos = 4, cex = 0.6)
-#   text(1000000, 84000000, bquote('read_depth = ln( b1 / (b1 - Concordant_Aligned)) / exp(ln.rate.constant) '), pos = 4, cex = 0.6)
-    text(1000000, 84000000, bquote('read_depth = b2 * ln( b1 / (b1 - Concordant_Aligned))'), pos = 4, cex = 0.6)
-    text(1000000, 80000000, bquote('b1 = '~.(b1)), pos = 4, cex = 0.6)
-#   text(1000000, 76000000, bquote('ln.rate.constant = -'~.(-ln.rate.constant)), pos = 4, cex = 0.6)#double negative allows one to copy/paste from PDF as minus and not hyphen
-    text(1000000, 76000000, bquote('b2 = '~.(reciprocal.rate.constant)), pos = 4, cex = 0.6)
+    text(1000000, 84000000, bquote('read_depth = b1 * ln( b2 / (b2 - Concordant_Aligned))'), pos = 4, cex = 0.6)
+    text(1000000, 76000000, bquote('b1 = '~.(reciprocal.rate.constant)), pos = 4, cex = 0.6)
+    text(1000000, 80000000, bquote('b2 = '~.(b2)), pos = 4, cex = 0.6)
     dev.off()
 }
 
