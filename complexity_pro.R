@@ -30,7 +30,7 @@ if (argsLen == 1) {
     plot(unique~reads, df, ylim = c(0,100000000), xlim = c(0,100000000),
          pch = 16, cex = 0.5, ylab = 'Unique', xlab = 'Read Depth', yaxs="i", xaxs="i")
     
-    lines(read.depth.values, b1*(1-exp(-exp(ln.rate.constant) * read.depth.values)), col='red')
+    lines(read.depth.values, b2*(1-exp(-exp(ln.rate.constant) * read.depth.values)), col='red')
     abline(0, 1, col='blue', lty = 2)
 
     text(1000000, 95000000, bquote('unique at 10 million read depth = '~.(unique.at.10mil)),  pos = 4)
@@ -41,7 +41,7 @@ if (argsLen == 1) {
     plot(unique~reads, df, ylim = c(0,100000000), xlim = c(0,100000000),
          pch = 16, cex = 0.5, ylab = 'Concordant Aligned', xlab = 'Raw Read Depth', yaxs="i", xaxs="i")
     
-    lines(read.depth.values, b1*(1-exp(-exp(ln.rate.constant) * read.depth.values)), col='red')
+    lines(read.depth.values, b2*(1-exp(-exp(ln.rate.constant) * read.depth.values)), col='red')
     abline(0, 1, col='blue', lty = 2)
     text(1000000, 97000000, bquote('Estimate the necessary read_depth for desired number of'), pos = 4, cex = 0.8)
     text(1000000, 93000000, bquote('concordantly aligned reads using the following'), pos = 4, cex = 0.8)
