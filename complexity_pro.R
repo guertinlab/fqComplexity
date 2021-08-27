@@ -20,6 +20,8 @@ asm.depth = nls(df$unique ~ b2*(1-exp(-exp(ln.rate.constant) * df$reads)),
 b2 = coef(asm.depth)[1]
 ln.rate.constant = coef(asm.depth)[2]
 reciprocal.rate.constant = exp(-ln.rate.constant)
+b1.rounded = signif(reciprocal.rate.constant, 2)
+b2.rounded = signif(b2, 2)
 
 read.depth.values = seq(0, 100000000, by = 1000000)
 unique.at.10mil = b2*(1-exp(-exp(ln.rate.constant ) * 10000000))
@@ -47,8 +49,8 @@ if (argsLen == 1) {
     text(1000000, 93000000, bquote('concordantly aligned reads using the following'), pos = 4, cex = 0.8)
     text(1000000, 89000000, bquote('equation and parameters:'), pos = 4, cex = 0.8)
     text(1000000, 84000000, bquote('read_depth = b1 * ln( b2 / (b2 - Concordant_Aligned))'), pos = 4, cex = 0.6)
-    text(1000000, 80000000, bquote('b1 = '~.(signif(reciprocal.rate.constant, 2))), pos = 4, cex = 0.6)
-    text(1000000, 76000000, bquote('b2 = '~.(signif(b2, 2)), pos = 4, cex = 0.6)
+    text(1000000, 80000000, bquote('b1 = '~.(b1.rounded)), pos = 4, cex = 0.6)
+    text(1000000, 76000000, bquote('b2 = '~.(b2.rounded)), pos = 4, cex = 0.6)
     dev.off()
 }
 
