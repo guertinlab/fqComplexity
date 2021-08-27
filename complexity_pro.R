@@ -26,8 +26,9 @@ b2.rounded = signif(b2, 2)
 read.depth.values = seq(0, 100000000, by = 1000000)
 unique.at.10mil = b2*(1-exp(-exp(ln.rate.constant ) * 10000000))
 
+frac.unique.at.10mil = unique.at.10mil/10000000
 if (argsLen == 1) {
-  system(paste0('echo "',unique.at.10mil,'\t',prefix.name,'\t1.0\tUnique at 10mil" >> ',prefix.name,'_QC_metrics.txt'))
+  system(paste0('echo "',frac.unique.at.10mil,'\t',prefix.name,'\t1.0\tUnique at 10mil" >> ',prefix.name,'_QC_metrics.txt'))
 
     pdf(paste(prefix.name,'_complexity.pdf', sep=''), width=6, height=6, useDingbats=FALSE)
     par(pty="s")
