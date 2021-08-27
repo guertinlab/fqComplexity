@@ -19,6 +19,7 @@ asm.depth = nls(df$unique ~ b1*(1-exp(-exp(ln.rate.constant) * df$reads)),
 
 b1 = coef(asm.depth)[1]
 ln.rate.constant = coef(asm.depth)[2]
+reciprocal.rate.constant = exp(-ln.rate.constant)
 
 read.depth.values = seq(0, 100000000, by = 1000000)
 unique.at.10mil = b1*(1-exp(-exp(ln.rate.constant ) * 10000000))
@@ -47,10 +48,11 @@ if (argsLen == 1) {
 #   text(1000000, 85000000, bquote('Concordant_Aligned = b1*(1-exp(-exp(ln.rate.constant ) * read_depth))'), pos = 4, cex = 0.6)
     text(1000000, 89000000, bquote('equation and parameters:'), pos = 4, cex = 0.8)
 #   text(1000000, 84000000, bquote('read_depth = ln(-((Concordant_Aligned /  b1) -1 )) / -exp(ln.rate.constant) '), pos = 4, cex = 0.6)
-    text(1000000, 84000000, bquote('read_depth = ln( b1 / (b1 - Concordant_Aligned)) / exp(ln.rate.constant) '), pos = 4, cex = 0.6)
+#   text(1000000, 84000000, bquote('read_depth = ln( b1 / (b1 - Concordant_Aligned)) / exp(ln.rate.constant) '), pos = 4, cex = 0.6)
+    text(1000000, 84000000, bquote('read_depth = b2 * ln( b1 / (b1 - Concordant_Aligned))'), pos = 4, cex = 0.6)
     text(1000000, 80000000, bquote('b1 = '~.(b1)), pos = 4, cex = 0.6)
-    text(1000000, 76000000, bquote('ln.rate.constant = -'~.(-ln.rate.constant)), pos = 4, cex = 0.6)#double negative allows one to copy/paste from PDF as minus and not hyphen
-
+#   text(1000000, 76000000, bquote('ln.rate.constant = -'~.(-ln.rate.constant)), pos = 4, cex = 0.6)#double negative allows one to copy/paste from PDF as minus and not hyphen
+    text(1000000, 76000000, bquote('b2 = '~.(reciprocal.rate.constant)), pos = 4, cex = 0.6)
     dev.off()
 }
 
