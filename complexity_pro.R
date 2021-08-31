@@ -40,7 +40,7 @@ if (argsLen == 1) {
     text(1000000, 95000000, bquote('unique at 10 million read depth = '~.(unique.at.10mil)),  pos = 4)
     dev.off()
 } else {
-    pdf(paste(prefix.name,'_complexity.pdf', sep=''), width=6, height=6, useDingbats=FALSE)
+    pdf(paste(prefix.name,'_read_depth_estimate.pdf', sep=''), width=6, height=6, useDingbats=FALSE)
     par(pty="s")
     plot(unique~reads, df, ylim = c(0,100000000), xlim = c(0,100000000),
          pch = 16, cex = 0.5, ylab = 'Concordant Aligned', xlab = 'Raw Read Depth', yaxs="i", xaxs="i")
