@@ -5,7 +5,7 @@ argsLen <- length(Args)
 
 complexity.log = Args[1]
 print(complexity.log)
-prefix.name = strsplit(strsplit(complexity.log, "_complexity")[[1]][1], "_noadap_trimmed")[[1]][1]
+prefix.name = strsplit(strsplit(complexity.log, "_complexity")[[1]][1], "_PE1")[[1]][1]
 complexity = read.table(complexity.log, header=FALSE)
 
 #this is for QC for PCR duplicates
