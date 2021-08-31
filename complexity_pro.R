@@ -20,8 +20,8 @@ asm.depth = nls(df$unique ~ b2*(1-exp(-exp(ln.rate.constant) * df$reads)),
 b2 = coef(asm.depth)[1]
 ln.rate.constant = coef(asm.depth)[2]
 reciprocal.rate.constant = exp(-ln.rate.constant)
-b1.rounded = signif(reciprocal.rate.constant, 2)
-b2.rounded = signif(b2, 2)
+b1.rounded = signif(reciprocal.rate.constant, 3)
+b2.rounded = signif(b2, 3)
 
 read.depth.values = seq(0, 100000000, by = 1000000)
 unique.at.10mil = b2*(1-exp(-exp(ln.rate.constant ) * 10000000))
