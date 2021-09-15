@@ -8,7 +8,7 @@ do
             inpt=$OPTARG
             ;;
 	x)
-	    factorx=$OPTARG
+	    factorprex=$OPTARG
 	    ;;
 	y)
 	    factory=$OPTARG
@@ -16,6 +16,8 @@ do
 	
     esac
 done
+
+factorx=$(echo "1.0 / $factorprex" | bc -l)
     
 if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
     nm=$(echo $inpt | awk -F".fastq" '{print $1}')
