@@ -16,10 +16,9 @@ do
 	
     esac
 done
-
-factorx=$(echo "1.0 / $factorprex" | bc -l)
     
-if [ -n "$inpt" ] && [ -n "$factorx" ] && [ -n "$factory" ]; then
+if [ -n "$inpt" ] && [ -n "$factorprex" ] && [ -n "$factory" ]; then
+    factorx=$(echo "1.0 / $factorprex" | bc -l)
     nm=$(echo $inpt | awk -F".fastq" '{print $1}')
     if [ -f ${nm}_complexity_total.log ]; then
     	rm ${nm}_complexity_total.log
