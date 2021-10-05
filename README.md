@@ -22,7 +22,7 @@ Prior to running `fqComplexity`, you need to install the following dependencies 
 
 `fqdedup` https://github.com/guertinlab/fqdedup
 
-`complexity_pro.R` from this repository
+`complexity_pro.R` https://github.com/guertinlab/fqComplexity/blob/main/complexity_pro.R 
 
 Usage: 
 
