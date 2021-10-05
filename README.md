@@ -8,7 +8,7 @@ The `complexity_pro.R` script is within this repository.
 ```
 wget https://raw.githubusercontent.com/guertinlab/fqComplexity/main/complexity_pro.R
 ```
-Navigate to the directory containg `fqComplexity` and change modifications with:
+Navigate to the directory containg `fqComplexity` and `complexity_pro.R`, then change permissions with:
 
 ```
 chmod +x fqComplexity
